@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Image</title>
+</head>
+<body>
+    {{ error }}
+    <form action="new_image_handler" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" name="OK" value="send">
+    </form>
+</body>
+</html>

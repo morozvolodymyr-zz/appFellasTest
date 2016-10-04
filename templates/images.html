@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Images</title>
+    {% load static from staticfiles %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+     <script type="text/javascript">
+        var root_url = 'http://127.0.0.1:8000';
+        function images() {
+            $(window).load('static/ajax/images_table.html', function (template) {
+                $.ajax({
+                    type: 'GET',
+                    contentType: 'application/json',
+                    url: root_url + '/images',
+                    dataType: 'json',
+                    success: function (data, text_status, jq) {
+                        var j_images = data.j_images;
+                        $('#image').html(
+                                _.template(template)({
+                                    images: j_images
+                                })
+                        );
+                    }
+                })
+            })
+        }
+    </script>
+</head>
+<body onload="images()">
+<div id="image"></div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<% if (images.length > 0 && images[0].format){ %>
+    <a href="new_image">New image</a><br>
+    <a href="log_out">Log out</a><br>
+<% } else if (images.length == 0) { %>
+    <a href="new_image">New image</a><br>
+    <a href="log_out">Log out</a><br>
+    <a href="authorization">Authorization</a><br>
+<% } else { %>
+    <a href="authorization">Authorization</a><br>
+<% } %>
+<table>
+    <tbody>
+        <tr>
+            <th>Name</th>
+            <th>Format</th>
+            <th>Author</th>
+            <th>Uploaded</th>
+            <th>Link</th>
+        </tr>
+        <% _.each(images, function (image) { %>
+        <tr>
+            <td><%- image.name %></td>
+            <td><%- image.format %></td>
+            <td><%- image.author %></td>
+            <td><%- image.uploaded %></td>
+            <td><a href="<%- image.link %>">Show</a></td>
+        </tr>
+        <% }) %>
+    </tbody>
+</table>

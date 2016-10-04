@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    <a href="get_images">Images</a><br>
+    {% if request.session.user_e_mail %}
+        <a href="new_image">New image</a><br>
+        <a href="log_out">Log out</a><br>
+    {% else %}
+    <a href="authorization">Authorization</a><br>
+    {% endif %}
+</body>
+</html>
